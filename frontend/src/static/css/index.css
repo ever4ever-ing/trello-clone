@@ -452,6 +452,69 @@ button, input, select, textarea, input::placeholder {
   border-left: 1px rgba(211, 211, 211, 0.55) solid;
 }
 
+.header__user-menu {
+  position: relative;
+}
+
+.header__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  min-width: 220px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.header__dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #f6f7fb;
+}
+
+.header__dropdown-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0;
+}
+
+.header__dropdown-username {
+  font-size: 0.78rem;
+  color: #888;
+  margin: 0;
+}
+
+.header__dropdown-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.header__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.header__dropdown-item:hover {
+  background: #f0f0f0;
+  color: #e74c3c;
+}
+
 .header--transparent {
   background-color: transparent;
   color: white;

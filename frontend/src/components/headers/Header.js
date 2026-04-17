@@ -17,7 +17,7 @@ import globalContext from "../../context/globalContext";
 import NotificationsModal from "../modals/NotificationsModal";
 
 const Header = (props) => {
-    const { authUser, board } = useContext(globalContext);
+    const { authUser, board, logout } = useContext(globalContext);
 
     const [searchQuery, setSearchQuery] = useState(""); //This variable keeps track of what to show in the search bar
     const [backendQuery, setBackendQuery] = useState(""); //This variable is used to query the backend, debounced
@@ -29,6 +29,8 @@ const Header = (props) => {
     const searchElem = useRef(null);
     const [showNotifications, setShowNotifications] = useState(false);
     useBlurSetState(".label-modal", showNotifications, setShowNotifications);
+    const [showUserMenu, setShowUserMenu] = useState(false);
+    useBlurSetState(".header__user-menu", showUserMenu, setShowUserMenu);
 
     useEffect(() => {
         if (searchQuery !== "") setShowSearch(true);
@@ -96,10 +98,28 @@ const Header = (props) => {
                                 (notification) => notification.unread == true
                             ) && <div className="header__unread"></div>}
                         </li>
-                        <li className="header__li header__li--border">
-                            <a>
+                        <li className="header__li header__li--border header__user-menu">
+                            <button onClick={() => setShowUserMenu((v) => !v)}>
                                 <i className="fal fa-bars"></i>
-                            </a>
+                            </button>
+                            {showUserMenu && (
+                                <div className="header__dropdown">
+                                    <div className="header__dropdown-header">
+                                        <ProfilePic user={authUser} large={false} />
+                                        <div>
+                                            <p className="header__dropdown-name">{authUser.full_name}</p>
+                                            <p className="header__dropdown-username">@{authUser.username}</p>
+                                        </div>
+                                    </div>
+                                    <hr className="header__dropdown-divider" />
+                                    <button
+                                        className="header__dropdown-item"
+                                        onClick={() => { logout(); localStorage.removeItem("accessToken"); localStorage.removeItem("refreshToken"); }}
+                                    >
+                                        <i className="fal fa-sign-out"></i> Cerrar sesión
+                                    </button>
+                                </div>
+                            )}
                         </li>
                     </ul>
                 </div>

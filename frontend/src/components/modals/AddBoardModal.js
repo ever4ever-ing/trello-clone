@@ -55,7 +55,7 @@ const AddBoardModal = ({ setShowAddBoardModal, addBoard, project }) => {
     };
 
     const accessKey = process.env.REACT_APP_UNSPLASH_API_ACCESS_KEY;
-    const { data } = useAxiosGet(
+    const { data, loading } = useAxiosGet(
         `https://api.unsplash.com/photos?client_id=${accessKey}`,
         false
     );
@@ -66,7 +66,7 @@ const AddBoardModal = ({ setShowAddBoardModal, addBoard, project }) => {
         if (selectedBackground !== 0) setExtraBackground(null);
     }, [selectedBackground]);
 
-    if (!data) return null;
+    if (loading && accessKey) return null;
     return (
         <>
             {showBoardModal ? (

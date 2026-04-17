@@ -207,19 +207,23 @@ export const convertUnsplashToOptions = (unsplashData) => {
 };
 
 export const getBoardBackgroundOptions = (unsplashData) => {
-    if (!unsplashData) return [];
     const res = [
         // item[0] is color or url; item[1] true if image, false if color, item[2] is full image url if applicable
         ["#4680FF", false],
         ["red", false],
         ["#FFB64D", false],
+        ["#2ecc71", false],
+        ["#9b59b6", false],
+        ["#1abc9c", false],
     ];
 
-    const unsplashDataTransformed = convertUnsplashToOptions(unsplashData);
-    res.push(...unsplashDataTransformed);
+    if (unsplashData) {
+        const unsplashDataTransformed = convertUnsplashToOptions(unsplashData);
+        res.push(...unsplashDataTransformed);
+        shuffleArray(res);
+        for (let i = 0; i < 5; i++) res.pop();
+    }
 
-    shuffleArray(res);
-    for (let i = 0; i < 5; i++) res.pop();
     return res;
 };
 

@@ -1,0 +1,13 @@
+django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+pillow
+redis
+drf-yasg
+uritemplate
+pyyaml
+pytest
+pytest-django
+pytest-cov
+mixer

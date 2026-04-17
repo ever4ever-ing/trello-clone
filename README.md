@@ -38,25 +38,25 @@ A Trello clone made using Django Rest Framework, SASS, React, and Redis.
 $ git clone https://github.com/vdevired/trello-clone.git
 $ cd trello-clone
 ```
-3. Install [pipenv](https://pypi.org/project/pipenv/), a python virtual environment manager. Install backend dependencies and run migrations to create database. Default database is SQLite.
+3. Install backend dependencies and run migrations. Default database is SQLite.
 ```
 $ cd backend
-$ pipenv install
-$ pipenv run python manage.py migrate
+$ pip install -r requirements.txt
+$ python manage.py migrate
 ```
 4. Install frontend dependencies.
 ```
 $ cd frontend
-$ yarn install
+$ npm install
 ```
-5. Run redis on port 6380
-``` 
+5. Run Redis on port 6380.
+```
 $ redis-server --port 6380
 ```
-6. Run both frontend and backend servers with following commands in appropriate directories.
+6. Run both frontend and backend servers in their respective directories.
 ```
-$ pipenv run python manage.py runserver
-$ yarn start
+$ python manage.py runserver
+$ npm start
 ```
 
 ## Screenshots
